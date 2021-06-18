@@ -95,7 +95,7 @@ export function formatPrecision (value, precision = 2) {
  */
 export function formatBigNumber (value) {
   if (isNumber(+value)) {
-    return numeral(value).format('0.[00]a')
+    return numeral(+value).format('0.[00]a')
   }
   return '--'
 }
