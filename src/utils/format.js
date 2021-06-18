@@ -12,7 +12,29 @@
  * limitations under the License.
  */
 
+import numeral from 'numeral'
 import { isNumber, isObject, isValid } from './typeChecks'
+
+/**
+ * Numeral register locale "id"
+ */
+numeral.register('locale', 'id', {
+  delimiters: {
+    thousands: '.',
+    decimal: ','
+  },
+  abbreviations: {
+    thousand: 'K',
+    million: 'M',
+    billion: 'B',
+    trillion: 'T'
+  },
+  currency: {
+    symbol: 'Rp'
+  }
+})
+
+numeral.locale('id')
 
 /**
  * 格式化值
@@ -73,16 +95,7 @@ export function formatPrecision (value, precision = 2) {
  */
 export function formatBigNumber (value) {
   if (isNumber(+value)) {
-    if (value > 1000000000) {
-      return `${+((value / 1000000000).toFixed(3))}B`
-    }
-    if (value > 1000000) {
-      return `${+((value / 1000000).toFixed(3))}M`
-    }
-    if (value > 1000) {
-      return `${+((value / 1000).toFixed(3))}K`
-    }
-    return value
+    return numeral(value).format('0.[00]a')
   }
   return '--'
 }
