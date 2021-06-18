@@ -61,6 +61,7 @@ export default class YAxisOverlayView extends View {
       let shouldFormatBigNumber = false
       if (this._yAxis.isCandleYAxis()) {
         precision = this._chartData.pricePrecision()
+        shouldFormatBigNumber = true
       } else {
         technicalIndicators.forEach(technicalIndicator => {
           precision = Math.max(technicalIndicator.precision, precision)
