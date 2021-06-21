@@ -127,7 +127,6 @@ export function getTechnicalIndicatorTooltipData (technicalIndicatorData = {}, t
   const calcParams = technicalIndicator.calcParams
   const plots = technicalIndicator.plots
   const precision = technicalIndicator.precision
-  const shouldFormatBigNumber = technicalIndicator.shouldFormatBigNumber
 
   const values = []
   let name = ''
@@ -143,10 +142,7 @@ export function getTechnicalIndicatorTooltipData (technicalIndicatorData = {}, t
     if (isValid(plot.title)) {
       let value = technicalIndicatorData[plot.key]
       if (isValid(value)) {
-        value = formatPrecision(value, precision)
-        if (shouldFormatBigNumber) {
-          value = formatBigNumber(value)
-        }
+        value = value.toLocaleString('id-ID', { minimumFractionDigits: precision, maximumFractionDigits: precision })
       }
       data.title = plot.title
       data.value = value
