@@ -230,7 +230,7 @@ export default class YAxis extends Axis {
    * @private
    */
   _innerConvertToPixel (value) {
-    return Math.round((1.0 - (value - this._minValue) / this._range) * this._height)
+    return (1.0 - (value - this._minValue) / this._range) * this._height
   }
 
   /**
