@@ -39,7 +39,7 @@ export default class TechnicalIndicator {
     name, series, calcParams, plots, precision,
     calcParamsAllowDecimal, shouldCheckParamCount,
     shouldOhlc, shouldFormatBigNumber,
-    baseValue, minValue, maxValue, styles
+    baseValue, zeroValue, minValue, maxValue, styles
   }) {
     // 指标名
     this.name = name || ''
@@ -61,6 +61,8 @@ export default class TechnicalIndicator {
     this.shouldFormatBigNumber = shouldFormatBigNumber
     // 基础比对数据
     this.baseValue = isNumber(baseValue) ? baseValue : null
+    // allow zero value
+    this.zeroValue = isBoolean(zeroValue) ? zeroValue : false
     // 指定的最小值
     this.minValue = minValue
     // 指定的最大值

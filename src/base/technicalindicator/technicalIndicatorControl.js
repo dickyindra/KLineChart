@@ -17,7 +17,6 @@ import TechnicalIndicator from './TechnicalIndicator'
 import extension from '../../data/extension'
 
 import { isFunction, isValid } from '../../utils/typeChecks'
-import { formatBigNumber, formatPrecision } from '../../utils/format'
 import { logWarn } from '../../utils/logger'
 
 /**
@@ -48,6 +47,7 @@ export function createTechnicalIndicatorMapping () {
  * @param shouldOhlc
  * @param shouldFormatBigNumber
  * @param baseValue
+ * @param zeroValue
  * @param minValue
  * @param maxValue
  * @param styles
@@ -59,7 +59,7 @@ export function createTechnicalIndicatorMapping () {
 export function createTechnicalIndicatorInstance ({
   name, series, calcParams, plots, precision,
   calcParamsAllowDecimal, shouldCheckParamCount,
-  shouldOhlc, shouldFormatBigNumber, baseValue, minValue, maxValue, styles,
+  shouldOhlc, shouldFormatBigNumber, baseValue, zeroValue, minValue, maxValue, styles,
   calcTechnicalIndicator, regeneratePlots, render
 }) {
   if (!name || !isFunction(calcTechnicalIndicator)) {
@@ -80,6 +80,7 @@ export function createTechnicalIndicatorInstance ({
           shouldOhlc,
           shouldFormatBigNumber,
           baseValue,
+          zeroValue,
           minValue,
           maxValue,
           styles

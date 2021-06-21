@@ -63,6 +63,10 @@ To complete a custom technical indicator, you only need to generate a technical 
   // If set, when the graph is bar, it will be drawn above and below this value, such as: the macd value of the MACD indicator
   baseValue: null,
 
+  // Zero value, default false
+  // If set true, when the graph is bar and 0 value, it will not be drawn.
+  zeroValue: false,
+
   // The specified minimum value, which can be defaulted
   // If set, this will prevail when calculating the minimum value on the y-axis
   minValue: null,
