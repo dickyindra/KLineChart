@@ -177,7 +177,14 @@ export default class TechnicalIndicatorView extends View {
                     if (!isValid(zeroValue)) {
                       zeroValue = false
                     }
-                    bar.y = height < 1 ? zeroValue ? baseValueY : baseValueY - 1 : valueY
+
+                    if (zeroValue && height === 0) {
+                      bar.y = baseValueY
+                    } else if (height < 1) {
+                      bar.y = baseValueY - 1
+                    } else {
+                      bar.y = valueY
+                    }
                   }
                   bar.color = (plot.color && plot.color(cbData, styles)) || styles.bar.noChangeColor
                   bar.isStroke = plot.isStroke ? plot.isStroke(cbData) : false
