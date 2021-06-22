@@ -200,7 +200,7 @@ export default class CandleView extends TechnicalIndicatorView {
     })
 
     this._ctx.font = createFont(lowHighPriceMarkOptions.textSize, lowHighPriceMarkOptions.textWeight, lowHighPriceMarkOptions.textFamily)
-    const text = formatPrecision(price, pricePrecision)
+    const text = price.toLocaleString('id-ID', { minimumFractionDigits: pricePrecision, maximumFractionDigits: pricePrecision })
     this._ctx.textBaseline = 'middle'
     this._ctx.fillText(text, startX + 5 + lowHighPriceMarkOptions.textMargin, y)
   }

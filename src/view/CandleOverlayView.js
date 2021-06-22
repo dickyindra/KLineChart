@@ -390,7 +390,7 @@ export default class CandleOverlayView extends TechnicalIndicatorOverlayView {
             break
           }
           default: {
-            values[index] = formatPrecision(value, pricePrecision)
+            values[index] = values[index].toLocaleString('id-ID', { minimumFractionDigits: pricePrecision, maximumFractionDigits: pricePrecision })
             break
           }
         }
