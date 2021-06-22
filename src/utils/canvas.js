@@ -18,7 +18,9 @@
  * @returns {number}
  */
 export function getPixelRatio (canvas) {
-  return (canvas.ownerDocument && canvas.ownerDocument.defaultView && canvas.ownerDocument.defaultView.devicePixelRatio) || 2
+  const devicePixelRatio = (canvas.ownerDocument && canvas.ownerDocument.defaultView && canvas.ownerDocument.defaultView.devicePixelRatio) || 2
+  const maxPixelRatio = Math.max(2, devicePixelRatio)
+  return maxPixelRatio
 }
 
 /**
