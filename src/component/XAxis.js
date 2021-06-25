@@ -66,16 +66,16 @@ export default class XAxis extends Axis {
       }
       const optimalTickLength = optimalTicks.length
       if (optimalTickLength === 1) {
-        optimalTicks[0].v = formatDate(dateTimeFormat, optimalTicks[0].oV, 'YYYY-MM-DD hh:mm')
+        optimalTicks[0].v = formatDate(dateTimeFormat, optimalTicks[0].oV, 'DD-MM-YYYY hh:mm')
       } else {
         const firstTimestamp = optimalTicks[0].oV
         const secondTimestamp = optimalTicks[1].oV
         if (optimalTicks[2]) {
           const thirdV = optimalTicks[2].v
           if (/^[0-9]{2}-[0-9]{2}$/.test(thirdV)) {
-            optimalTicks[0].v = formatDate(dateTimeFormat, firstTimestamp, 'MM-DD')
+            optimalTicks[0].v = formatDate(dateTimeFormat, firstTimestamp, 'DD-MM')
           } else if (/^[0-9]{4}-[0-9]{2}$/.test(thirdV)) {
-            optimalTicks[0].v = formatDate(dateTimeFormat, firstTimestamp, 'YYYY-MM')
+            optimalTicks[0].v = formatDate(dateTimeFormat, firstTimestamp, 'MM-YYYY')
           } else if (/^[0-9]{4}$/.test(thirdV)) {
             optimalTicks[0].v = formatDate(dateTimeFormat, firstTimestamp, 'YYYY')
           }
@@ -89,13 +89,13 @@ export default class XAxis extends Axis {
 
   _optimalTickLabel (dateTimeFormat, timestamp, comparedTimestamp) {
     const year = formatDate(dateTimeFormat, timestamp, 'YYYY')
-    const month = formatDate(dateTimeFormat, timestamp, 'YYYY-MM')
-    const day = formatDate(dateTimeFormat, timestamp, 'MM-DD')
+    const month = formatDate(dateTimeFormat, timestamp, 'MM-YYYY')
+    const day = formatDate(dateTimeFormat, timestamp, 'DD-MM')
     if (year !== formatDate(dateTimeFormat, comparedTimestamp, 'YYYY')) {
       return year
-    } else if (month !== formatDate(dateTimeFormat, comparedTimestamp, 'YYYY-MM')) {
+    } else if (month !== formatDate(dateTimeFormat, comparedTimestamp, 'MM-YYYY')) {
       return month
-    } else if (day !== formatDate(dateTimeFormat, comparedTimestamp, 'MM-DD')) {
+    } else if (day !== formatDate(dateTimeFormat, comparedTimestamp, 'DD-MM')) {
       return day
     }
     return null
