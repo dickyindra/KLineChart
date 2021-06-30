@@ -232,6 +232,7 @@ export default class CandleView extends TechnicalIndicatorView {
       color = lastPriceMarkOptions.noChangeColor
     }
     this._ctx.save()
+    this._ctx.globalCompositeOperation = 'destination-over'
     this._ctx.strokeStyle = color
     this._ctx.lineWidth = lastPriceMarkOptions.line.size
     if (lastPriceMarkOptions.line.style === LineStyle.DASH) {
