@@ -89,13 +89,34 @@ export function formatPrecision (value, precision = 2) {
   return `${v}`
 }
 
+export const ROUNDING = {
+  ROUND: 0,
+  UP: 1,
+  DOWN: 2
+}
+
 /**
  * 格式化大数据
  * @param value
+ * @param rounding
  */
-export function formatBigNumber (value) {
+export function formatBigNumber (value, rounding = ROUNDING.ROUND) {
   if (isNumber(+value)) {
-    return numeral(+value).format('0.[00]a')
+    let roundingFunction
+
+    if (rounding === ROUNDING.ROUND) {
+      roundingFunction = Math.round
+    }
+
+    if (rounding === ROUNDING.UP) {
+      roundingFunction = Math.ceil
+    }
+
+    if (rounding === ROUNDING.DOWN) {
+      roundingFunction = Math.floor
+    }
+
+    return numeral(+value).format('0.[00]a', roundingFunction)
   }
   return '--'
 }
