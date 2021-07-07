@@ -17,7 +17,7 @@ import { YAxisType } from '../data/options/styleOptions'
 import { TechnicalIndicatorPlotType } from '../base/technicalindicator/TechnicalIndicator'
 import { calcTextWidth, createFont } from '../utils/canvas'
 import { renderHorizontalLine, renderVerticalLine } from '../renderer/line'
-import { formatBigNumber, formatPrecision } from '../utils/format'
+import { formatBigNumber, formatPrecision, ROUNDING } from '../utils/format'
 import { isValid } from '../utils/typeChecks'
 import { renderFillRoundRect } from '../renderer/rect'
 import { renderText } from '../renderer/text'
@@ -252,7 +252,7 @@ export default class YAxisView extends View {
     } else {
       text = formatPrecision(value, precision)
       if (shouldFormatBigNumber) {
-        text = formatBigNumber(text)
+        text = formatBigNumber(text, ROUNDING.DOWN)
       }
     }
     this._ctx.font = createFont(size, weight, family)
