@@ -369,17 +369,25 @@ export default class ChartData {
    */
   addData (data, pos, more) {
     if (isObject(data)) {
+      const dataSize = this._dataList.length
       if (isArray(data)) {
         this._loading = false
         this._more = isBoolean(more) ? more : true
         const isFirstAdd = this._dataList.length === 0
-        this._dataList = data.concat(this._dataList)
+        if (pos >= dataSize) {
+          this._dataList = this._dataList.concat(data)
+          if (this._offsetRightBarCount < 0) {
+            this._offsetRightBarCount -= data.length
+          }
+        } else {
+          this._dataList = data.concat(this._dataList)
+        }
+
         if (isFirstAdd) {
           this.setOffsetRightSpace(this._offsetRightSpace)
         }
         this._adjustFromTo()
       } else {
-        const dataSize = this._dataList.length
         if (pos >= dataSize) {
           this._dataList.push(data)
           if (this._offsetRightBarCount < 0) {

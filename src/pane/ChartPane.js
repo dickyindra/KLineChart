@@ -367,14 +367,20 @@ export default class ChartPane {
    * @param dataList
    * @param more
    * @param extendFun
+   * @param direction
    * @private
    */
-  _applyDataList (dataList, more, extendFun) {
+  _applyDataList (dataList, more, extendFun, direction = 'before') {
+    const lastDataList = this._chartData.dataList()
+    const lastDataSize = lastDataList.length
+
     if (isArray(dataList)) {
       if (isFunction(extendFun)) {
         extendFun()
       }
-      this._chartData.addData(dataList, 0, more)
+
+      const pos = direction === 'before' ? 0 : lastDataSize
+      this._chartData.addData(dataList, pos, more)
       this._calcAllPaneTechnicalIndicator()
     }
   }
@@ -394,9 +400,11 @@ export default class ChartPane {
    * 添加更多数据
    * @param dataList
    * @param more
+   * @param direction
    */
-  applyMoreData (dataList, more) {
-    this._applyDataList(dataList, more)
+  applyMoreData (dataList, more, direction = 'before') {
+    console.log('awdadaw', direction)
+    this._applyDataList(dataList, more, false, direction)
   }
 
   /**

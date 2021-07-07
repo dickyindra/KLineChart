@@ -212,13 +212,14 @@ export default class Chart {
    * 添加历史更多数据
    * @param dataList
    * @param more
+   * @param direction
    */
-  applyMoreData (dataList, more) {
+  applyMoreData (dataList, more, direction) {
     if (!isArray(dataList)) {
       logWarn('applyMoreData', 'dataList', 'dataList must be an array!!!')
       return
     }
-    this._chartPane.applyMoreData(dataList, more)
+    this._chartPane.applyMoreData(dataList, more, direction)
   }
 
   /**
