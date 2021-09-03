@@ -155,6 +155,9 @@ export default class YAxis extends Axis {
     let range = Math.abs(maxValue - minValue)
     // 保证每次图形绘制上下都留间隙
     minValue = minValue - range * bottomRate
+    // handle min value for candle chart
+    minValue = this._isCandleYAxis ? Math.max(0, minValue) : minValue
+
     maxValue = maxValue + range * topRate
 
     range = Math.abs(maxValue - minValue)
