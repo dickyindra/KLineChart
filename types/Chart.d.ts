@@ -37,6 +37,8 @@ export declare interface Chart {
   setOffsetRightSpace(space: number): void;
   setLeftMinVisibleBarCount(barCount: number): void;
   setRightMinVisibleBarCount(barCount: number): void;
+  setLeftEmptyBarCount(barCount: number): void;
+  setRightEmptyBarCount(barCount: number): void;
   setDataSpace(space: number): void;
   clearData(): void;
   getDataList(): KLineData[];

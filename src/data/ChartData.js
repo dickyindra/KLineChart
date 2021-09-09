@@ -90,6 +90,10 @@ export default class ChartData {
     this._leftMinVisibleBarCount = 2
     // 右边最小可见bar的个数
     this._rightMinVisibleBarCount = 2
+    // Set the number of empty bars on the left
+    this._leftEmptyBarCount = null
+    // Set the number of empty bars on the right
+    this._rightEmptyBarCount = null
     // 开始绘制的索引
     this._from = 0
     // 结束的索引
@@ -184,13 +188,13 @@ export default class ChartData {
   _adjustFromTo () {
     const dataSize = this._dataList.length
     const barLength = this._totalDataSpace / this._dataSpace
-    const maxRightOffsetBarCount = barLength - Math.min(this._leftMinVisibleBarCount, dataSize)
+
+    const maxRightOffsetBarCount = this._leftEmptyBarCount !== null ? this._leftEmptyBarCount : barLength - Math.min(this._leftMinVisibleBarCount, dataSize)
     if (this._offsetRightBarCount > maxRightOffsetBarCount) {
       this._offsetRightBarCount = maxRightOffsetBarCount
     }
 
-    const minRightOffsetBarCount = -dataSize + Math.min(this._rightMinVisibleBarCount, dataSize)
-
+    const minRightOffsetBarCount = this._rightEmptyBarCount !== null ? -dataSize + (barLength - this._rightEmptyBarCount) : -dataSize + Math.min(this._rightMinVisibleBarCount, dataSize)
     if (this._offsetRightBarCount < minRightOffsetBarCount) {
       this._offsetRightBarCount = minRightOffsetBarCount
     }
@@ -494,6 +498,22 @@ export default class ChartData {
    */
   setRightMinVisibleBarCount (barCount) {
     this._rightMinVisibleBarCount = barCount
+  }
+
+  /**
+   * Set the number of empty bars on the left
+   * @param barCount
+   */
+  setLeftEmptyBarCount (barCount) {
+    this._leftEmptyBarCount = barCount
+  }
+
+  /**
+   * Set the number of empty bars on the right
+   * @param barCount
+   */
+  setRightEmptyBarCount (barCount) {
+    this._rightEmptyBarCount = barCount
   }
 
   /**

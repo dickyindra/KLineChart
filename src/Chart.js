@@ -170,6 +170,30 @@ export default class Chart {
   }
 
   /**
+   * Set the number of empty bars on the left
+   * @param barCount
+   */
+  setLeftEmptyBarCount (barCount) {
+    if (!isNumber(barCount) || barCount < 0) {
+      logWarn('setLeftEmptyBarCount', 'barCount', 'barCount must be a number and greater than zero!!!')
+      return
+    }
+    this._chartPane.chartData().setLeftEmptyBarCount(Math.ceil(barCount))
+  }
+
+  /**
+   * Set the number of empty bars on the right
+   * @param barCount
+   */
+  setRightEmptyBarCount (barCount) {
+    if (!isNumber(barCount) || barCount < 0) {
+      logWarn('setRightEmptyBarCount', 'barCount', 'barCount must be a number and greater than zero!!!')
+      return
+    }
+    this._chartPane.chartData().setRightEmptyBarCount(Math.ceil(barCount))
+  }
+
+  /**
    * 设置一条数据的空间
    * @param space
    */
