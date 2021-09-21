@@ -189,7 +189,7 @@ export default class ChartData {
     const dataSize = this._dataList.length
     const barLength = this._totalDataSpace / this._dataSpace
 
-    const maxRightOffsetBarCount = this._leftEmptyBarCount !== null ? this._leftEmptyBarCount : barLength - Math.min(this._leftMinVisibleBarCount, dataSize)
+    const maxRightOffsetBarCount = this._leftEmptyBarCount !== null ? barLength - (barLength - this._leftEmptyBarCount) : barLength - Math.min(this._leftMinVisibleBarCount, dataSize)
     if (this._offsetRightBarCount > maxRightOffsetBarCount) {
       this._offsetRightBarCount = maxRightOffsetBarCount
     }
