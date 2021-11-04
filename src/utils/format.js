@@ -84,7 +84,7 @@ export function formatDate (dateTimeFormat, timestamp, format = 'DD-MM hh:mm') {
 export function formatPrecision (value, precision = 2) {
   const v = +value
   if ((v || v === 0) && isNumber(v)) {
-    return v.toFixed(precision)
+    return Math.floor(value * 10 ** precision) / 10 ** precision
   }
   return `${v}`
 }
