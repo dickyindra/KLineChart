@@ -109,7 +109,7 @@ export default class Axis {
     if (this._range >= 0) {
       const intervalPrecision = this._computeInterval(this._range)
       const interval = intervalPrecision.interval
-      const precision = intervalPrecision.precision
+      const precision = this._isCandleYAxis ? this._chartData.pricePrecision() : intervalPrecision.precision
       const first = round(Math.ceil(this._minValue / interval) * interval, precision)
       const last = round(Math.floor(this._maxValue / interval) * interval, precision)
       let n = 0
