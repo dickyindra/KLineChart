@@ -16,7 +16,7 @@ import Axis from './Axis'
 import { CandleType, YAxisPosition, YAxisType } from '../data/options/styleOptions'
 import { isNumber, isValid } from '../utils/typeChecks'
 import { calcTextWidth, createFont } from '../utils/canvas'
-import { formatBigNumber, formatPrecision } from '../utils/format'
+import { formatBigNumber, formatPrecision, ROUNDING } from '../utils/format'
 import { round, log10, index10 } from '../utils/number'
 
 export default class YAxis extends Axis {
@@ -213,7 +213,7 @@ export default class YAxis extends Axis {
         default: {
           value = formatPrecision(v, precision)
           if (shouldFormatBigNumber) {
-            value = formatBigNumber(value)
+            value = formatBigNumber(value, ROUNDING.DOWN, precision)
           }
           break
         }
