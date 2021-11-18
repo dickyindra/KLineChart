@@ -112,6 +112,18 @@ export default class Chart {
   }
 
   /**
+   * Set the minimum price movement.
+   * @param price
+   */
+  setMinMove (price) {
+    if (!isNumber(price) || price < 0) {
+      logWarn('setMinMove', 'price', 'price must be a number and greater than zero!!!')
+      return
+    }
+    this._chartPane.chartData().setMinMove(price)
+  }
+
+  /**
    * 设置时区
    * @param timezone
    */

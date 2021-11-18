@@ -58,6 +58,9 @@ export default class ChartData {
     // 数量精度
     this._volumePrecision = 0
 
+    // minimum price movement
+    this._minMove = null
+
     this._dateTimeFormat = new Intl.DateTimeFormat(
       'en', {
         hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
@@ -278,6 +281,14 @@ export default class ChartData {
   }
 
   /**
+   * Get the minimum price movement
+   * @returns {number}
+   */
+  minMove () {
+    return this._minMove
+  }
+
+  /**
    * 获取时间格式化
    * @returns {Intl.DateTimeFormat | Intl.DateTimeFormat}
    */
@@ -335,6 +346,14 @@ export default class ChartData {
         default: { break }
       }
     }
+  }
+
+  /**
+   * Set the minimum price movement.
+   * @param price
+   */
+  setMinMove (price) {
+    this._minMove = price
   }
 
   /**

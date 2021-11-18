@@ -22,6 +22,10 @@ Set the price and quantity precision.
 - `pricePrecision` price accuracy, which affects the numerical accuracy of the price displayed on the entire chart, and also includes the technical indicator whose indicator series is price
 - `volumePrecision` quantity accuracy, which affects the numerical accuracy of the quantity displayed on the entire chart, and also includes the technical index of the volume where the indicator series is
 
+### setMinMove(price)
+Set the minimum price movement.
+- `price` number, number type
+
 
 ### setTimezone(timezone)
 Set the time zone.
