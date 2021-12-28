@@ -12,29 +12,7 @@
  * limitations under the License.
  */
 
-import numeral from 'numeral'
 import { isNumber, isObject, isValid } from './typeChecks'
-
-/**
- * Numeral register locale "id"
- */
-numeral.register('locale', 'id', {
-  delimiters: {
-    thousands: '.',
-    decimal: ','
-  },
-  abbreviations: {
-    thousand: 'K',
-    million: 'M',
-    billion: 'B',
-    trillion: 'T'
-  },
-  currency: {
-    symbol: 'Rp'
-  }
-})
-
-numeral.locale('id')
 
 /**
  * 格式化值
