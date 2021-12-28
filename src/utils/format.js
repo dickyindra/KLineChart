@@ -100,31 +100,9 @@ export const ROUNDING = {
  * @param value
  * @param rounding
  */
-export function formatBigNumber (value, rounding = ROUNDING.ROUND, precision) {
+export function formatBigNumber (value, precision = 0) {
   if (isNumber(+value)) {
-    let roundingFunction
-
-    if (rounding === ROUNDING.ROUND) {
-      roundingFunction = Math.round
-    }
-
-    if (rounding === ROUNDING.UP) {
-      roundingFunction = Math.ceil
-    }
-
-    if (rounding === ROUNDING.DOWN) {
-      roundingFunction = Math.floor
-    }
-
-    if (value >= 1000) {
-      return numeral(value).format('0.[00]a', roundingFunction)
-    }
-
-    if (precision) {
-      return Number(value).toLocaleString('id', { minimumFractionDigits: precision, maximumFractionDigits: precision })
-    }
-
-    return value
+    return Number(value).toLocaleString('id', { minimumFractionDigits: precision, maximumFractionDigits: precision })
   }
   return '--'
 }

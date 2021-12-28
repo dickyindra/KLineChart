@@ -224,7 +224,7 @@ export default class YAxis extends Axis {
         default: {
           value = formatPrecision(v, precision)
           if (shouldFormatBigNumber) {
-            value = formatBigNumber(value, ROUNDING.DOWN, precision)
+            value = formatBigNumber(value, precision)
           }
           break
         }

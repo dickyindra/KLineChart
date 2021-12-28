@@ -252,7 +252,7 @@ export default class YAxisView extends View {
     } else {
       text = formatPrecision(value, precision)
       if (shouldFormatBigNumber) {
-        text = formatBigNumber(text, ROUNDING.DOWN)
+        text = formatBigNumber(text)
       }
     }
     this._ctx.font = createFont(size, weight, family)

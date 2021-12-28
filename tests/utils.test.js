@@ -68,16 +68,16 @@ describe('utils', function () {
 
     describe('formatBigNumber', function () {
       it('should not be formatted', function () {
-        expect(formatBigNumber(10)).to.equals(10)
+        expect(formatBigNumber(10)).to.equals('10')
       })
       it('should be formatted as K', function () {
-        expect(formatBigNumber(1100)).to.match(/K/)
+        expect(formatBigNumber(1100)).to.equals('1.100')
       })
       it('should be formatted as M', function () {
-        expect(formatBigNumber(1100000)).to.match(/M/)
+        expect(formatBigNumber(1100000)).to.equals('1.100.000')
       })
       it('should be formatted as B', function () {
-        expect(formatBigNumber(1100000000)).to.match(/B/)
+        expect(formatBigNumber(1100000000)).to.equals('1.100.000.000')
       })
     })
   })
