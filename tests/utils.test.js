@@ -59,10 +59,10 @@ describe('utils', function () {
 
     describe('formatPrecision', function () {
       it('should be the default number of decimal places', function () {
-        expect(formatPrecision(2)).to.equals('2.00')
+        expect(formatPrecision(2)).to.equals('2,00')
       })
       it('should be the given number of decimal places', function () {
-        expect(formatPrecision(2.908, 6)).to.equals('2.908000')
+        expect(formatPrecision(2.908, 6)).to.equals('2,908000')
       })
     })
 
@@ -71,13 +71,13 @@ describe('utils', function () {
         expect(formatBigNumber(10)).to.equals('10')
       })
       it('should be formatted as K', function () {
-        expect(formatBigNumber(1100)).to.equals('1.100')
+        expect(formatBigNumber(1100)).to.equals('1,1K')
       })
       it('should be formatted as M', function () {
-        expect(formatBigNumber(1100000)).to.equals('1.100.000')
+        expect(formatBigNumber(1100000)).to.equals('1,1M')
       })
       it('should be formatted as B', function () {
-        expect(formatBigNumber(1100000000)).to.equals('1.100.000.000')
+        expect(formatBigNumber(1100000000)).to.equals('1,1B')
       })
     })
   })

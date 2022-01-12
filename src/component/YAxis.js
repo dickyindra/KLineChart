@@ -192,7 +192,6 @@ export default class YAxis extends Axis {
     let shouldFormatBigNumber = false
     if (this._isCandleYAxis) {
       precision = this._chartData.pricePrecision()
-      shouldFormatBigNumber = true
     } else {
       technicalIndicators.forEach(technicalIndicator => {
         precision = Math.max(precision, technicalIndicator.precision)
@@ -224,7 +223,7 @@ export default class YAxis extends Axis {
         default: {
           value = formatPrecision(v, precision)
           if (shouldFormatBigNumber) {
-            value = formatBigNumber(value, precision)
+            value = formatBigNumber(value)
           }
           break
         }

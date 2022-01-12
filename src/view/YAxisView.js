@@ -211,7 +211,7 @@ export default class YAxisView extends View {
       backgroundColor = lastPriceMarkOptions.noChangeColor
     }
     this._drawMarkLabel(
-      yAxisOptions, close, this._chartData.pricePrecision(), true,
+      yAxisOptions, close, this._chartData.pricePrecision(), false,
       {
         ...lastPriceMarkOptions.text, backgroundColor
       }
