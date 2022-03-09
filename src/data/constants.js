@@ -25,7 +25,7 @@ export const GRAPHIC_MARK_ID_PREFIX = 'graphic_mark_'
 export const CANDLE_PANE_ID = 'candle_pane'
 
 // 最小单条数据宽度
-export const MIN_DATA_SPACE = 10
+export const MIN_DATA_SPACE = 9
 
 // 最大单条数据宽度
 export const MAX_DATA_SPACE = 50
