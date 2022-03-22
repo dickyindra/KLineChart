@@ -448,19 +448,9 @@ export default class ChartData {
    * @param adjustBeforeFuc
    */
   setDataSpace (dataSpace, adjustBeforeFuc) {
-    const dataListCount = this.dataList().length
-    const oldDataSpace = this._dataSpace
-    const barLength = (this._totalDataSpace / dataSpace)
-    const maxBarLength = barLength - 12
-
-    if (dataListCount > 0 && dataListCount < maxBarLength && dataSpace < oldDataSpace) {
-      return
-    }
-
     if (dataSpace < MIN_DATA_SPACE || dataSpace > MAX_DATA_SPACE || this._dataSpace === dataSpace) {
       return
     }
-
     this._dataSpace = dataSpace
     this._barSpace = this._calcBarSpace()
     adjustBeforeFuc && adjustBeforeFuc()
