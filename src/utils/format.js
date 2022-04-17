@@ -12,7 +12,29 @@
  * limitations under the License.
  */
 
-import { isNumber, isObject, isValid } from './typeChecks'
+import numeral from 'numeral'
+import { isNumber, isObject, isString, isValid } from './typeChecks'
+
+/**
+ * Numeral register locale "id"
+ */
+numeral.register('locale', 'id', {
+  delimiters: {
+    thousands: '.',
+    decimal: ','
+  },
+  abbreviations: {
+    thousand: 'K',
+    million: 'M',
+    billion: 'B',
+    trillion: 'T'
+  },
+  currency: {
+    symbol: 'Rp'
+  }
+})
+
+numeral.locale('id')
 
 /**
  * 格式化值
@@ -61,9 +83,11 @@ export function formatDate (dateTimeFormat, timestamp, format = 'MM-DD hh:mm') {
  */
 export function formatPrecision (value, precision = 2) {
   const v = +value
-  if ((v || v === 0) && isNumber(v)) {
-    return v.toFixed(precision)
+
+  if (isNumber(v)) {
+    return Number(v).toLocaleString('id', { minimumFractionDigits: precision, maximumFractionDigits: precision })
   }
+
   return `${v}`
 }
 
@@ -72,17 +96,15 @@ export function formatPrecision (value, precision = 2) {
  * @param value
  */
 export function formatBigNumber (value) {
-  if (isNumber(+value)) {
-    if (value > 1000000000) {
-      return `${+((value / 1000000000).toFixed(3))}B`
-    }
-    if (value > 1000000) {
-      return `${+((value / 1000000).toFixed(3))}M`
-    }
-    if (value > 1000) {
-      return `${+((value / 1000).toFixed(3))}K`
-    }
-    return value
+  let v = value
+
+  if (isString(value)) {
+    v = Number(v.replaceAll('.', '').replaceAll(',', '.'))
   }
-  return '--'
+
+  if (isNumber(v)) {
+    return numeral(v).format('0.[00]a')
+  }
+
+  return `${v}`
 }
