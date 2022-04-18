@@ -16,7 +16,7 @@ import View from './View'
 import { TooltipShowRule, LineStyle } from '../options/styleOptions'
 import { TechnicalIndicatorPlotType, getTechnicalIndicatorPlotStyle } from '../component/technicalindicator/TechnicalIndicator'
 import { isValid, isObject, isFunction } from '../utils/typeChecks'
-import { formatPrecision, formatBigNumber } from '../utils/format'
+import { formatPrecision } from '../utils/format'
 import { renderHorizontalLine, renderVerticalLine } from '../renderer/line'
 import { calcTextWidth, createFont } from '../utils/canvas'
 import { renderText } from '../renderer/text'
@@ -266,7 +266,6 @@ export default class TechnicalIndicatorOverlayView extends View {
 
       const plots = tech.plots
       const precision = tech.precision
-      const shouldFormatBigNumber = tech.shouldFormatBigNumber
       const lineColors = styles.line.colors || []
       const colorSize = lineColors.length
       let lineCount = 0
@@ -296,9 +295,6 @@ export default class TechnicalIndicatorOverlayView extends View {
           let value = (techData || {})[plot.key]
           if (isValid(value)) {
             value = formatPrecision(value, precision)
-            if (shouldFormatBigNumber) {
-              value = formatBigNumber(value)
-            }
           }
           data.title = plot.title
           data.value = value || techOptions.tooltip.defaultValue
