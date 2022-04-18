@@ -143,7 +143,18 @@ export default class YAxis extends Axis {
         break
       }
       default: {
-        dif = index10(-precision)
+        if (this._isCandleYAxis) {
+          dif = this._chartStore.minMove()
+
+          if (minValue === maxValue) {
+            const difByValue = maxValue / 100
+            dif = difByValue < 1 ? dif : difByValue
+          }
+        }
+
+        if (dif === null || typeof dif === 'undefined') {
+          dif = index10(-precision)
+        }
       }
     }
     if (

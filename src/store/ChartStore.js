@@ -36,6 +36,9 @@ export default class ChartStore {
     // 数量精度
     this._volumePrecision = 0
 
+    // minimum price movement
+    this._minMove = null
+
     // 数据源
     this._dataList = []
     // 可见的数据(需要绘制的数据)
@@ -113,6 +116,22 @@ export default class ChartStore {
   }
 
   /**
+   * Get the minimum price movement
+   * @returns {number}
+   */
+  minMove () {
+    return this._minMove
+  }
+
+  /**
+   * Get the minimum price movement
+   * @returns {number}
+   */
+  minMove () {
+    return this._minMove
+  }
+
+  /**
    * 设置价格和数量精度
    * @param pricePrecision
    * @param volumePrecision
@@ -121,6 +140,14 @@ export default class ChartStore {
     this._pricePrecision = pricePrecision
     this._volumePrecision = volumePrecision
     this._technicalIndicatorStore.setSeriesPrecision(pricePrecision, volumePrecision)
+  }
+
+  /**
+   * Set the minimum price movement.
+   * @param price
+   */
+  setMinMove (price) {
+    this._minMove = price
   }
 
   /**

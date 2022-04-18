@@ -22,6 +22,10 @@ Set the price and volume precision. Set the price and quantity accuracy, and the
 - `pricePrecision` price precision
 - `volumePrecision` volume precision
 
+### setMinMove(price)
+Set the minimum price movement.
+- `price` number, number type
+
 
 ### setTimezone(timezone)
 Set the time zone.
