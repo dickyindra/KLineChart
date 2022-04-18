@@ -64,6 +64,13 @@ Set the minimum number of candles visible on the left.
 Set the minimum number of candles visible on the right.
 - `barCount` number, number type
 
+### setLeftEmptyBarCount(barCount)
+Set the number of empty bars on the left
+- `barCount` number, number type
+
+### setRightEmptyBarCount(barCount)
+Set the number of empty bars on the right
+- `barCount` number, number type
 
 ### setDataSpace(space)
 Set the space occupied by a piece of chart data, that is, the width of a single candlestick.
