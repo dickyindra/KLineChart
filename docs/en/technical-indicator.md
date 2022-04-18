@@ -119,6 +119,9 @@ To complete a technical indicator template, you only need to generate a technica
   // By default, basic comparison data
   // If set, when the graph is bar, it will be drawn above and below this value, such as: the macd value of the MACD indicator
   baseValue: null,
+  // Zero value, default false
+  // If set true, when the graph is bar and 0 value, it will not be drawn.
+  zeroValue: false,
   // By default
   // Can be value or method, if it is a method, it needs to return a string of color values
   color: (data, options) => {},

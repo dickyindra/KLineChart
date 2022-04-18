@@ -160,7 +160,18 @@ export default class TechnicalIndicatorView extends View {
                   if (valueY > baseValueY) {
                     bar.y = baseValueY
                   } else {
-                    bar.y = height < 1 ? baseValueY - 1 : valueY
+                    let zeroValue = plot.zeroValue
+                    if (!isValid(zeroValue)) {
+                      zeroValue = false
+                    }
+
+                    if (zeroValue && height === 0) {
+                      bar.y = baseValueY
+                    } else if (height < 1) {
+                      bar.y = baseValueY - 1
+                    } else {
+                      bar.y = valueY
+                    }
                   }
                   const plotStyle = getTechnicalIndicatorPlotStyle(
                     dataList, techResult, i, plot, styles, { color: styles.bar.noChangeColor }
