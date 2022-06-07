@@ -311,9 +311,9 @@ export default class CandleOverlayView extends TechnicalIndicatorOverlayView {
       values = [
         formatValue(kLineData, 'timestamp'),
         formatValue(kLineData, 'open'),
-        formatValue(kLineData, 'close'),
         formatValue(kLineData, 'high'),
         formatValue(kLineData, 'low'),
+        formatValue(kLineData, 'close'),
         formatValue(kLineData, 'volume')
       ]
       values.forEach((value, index) => {
