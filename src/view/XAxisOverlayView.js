@@ -47,7 +47,7 @@ export default class XAxisOverlayView extends View {
     }
 
     const timestamp = crosshair.kLineData.timestamp
-    const text = formatDate(this._chartStore.timeScaleStore().dateTimeFormat(), timestamp, 'YYYY-MM-DD hh:mm')
+    const text = formatDate(this._chartStore.timeScaleStore().dateTimeFormat(), timestamp, 'DD-MM-YYYY hh:mm')
 
     const paddingLeft = crosshairVerticalTextOptions.paddingLeft
     const paddingRight = crosshairVerticalTextOptions.paddingRight

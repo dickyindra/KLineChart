@@ -60,7 +60,7 @@ export function formatValue (data, key, defaultValue = '--') {
  * @param format
  * @returns {string}
  */
-export function formatDate (dateTimeFormat, timestamp, format = 'MM-DD hh:mm') {
+export function formatDate (dateTimeFormat, timestamp, format = 'DD-MM hh:mm') {
   if (isNumber(timestamp)) {
     const dateTimeString = dateTimeFormat.format(new Date(timestamp))
     const dateTimeStringArray = dateTimeString.split(', ')
