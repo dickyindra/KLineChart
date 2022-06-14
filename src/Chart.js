@@ -237,14 +237,21 @@ export default class Chart {
    * 添加历史更多数据
    * @param dataList k线数据数组
    * @param more 是否还有更多标识
+   * @param direction
    */
-  applyMoreData (dataList, more) {
+  applyMoreData (dataList, more, direction = 'before') {
     if (!isArray(dataList)) {
       logWarn('applyMoreData', 'dataList', 'dataList must be an array!!!')
       return
     }
     const chartStore = this._chartPane.chartStore()
-    chartStore.addData(dataList, 0, more)
+
+    const oldDataList = chartStore.dataList()
+    const oldDataSize = oldDataList.length
+
+    const pos = direction === 'before' ? 0 : oldDataSize
+    chartStore.addData(dataList, pos, more)
+
     chartStore.technicalIndicatorStore().calcInstance().finally(
       _ => {
         this._chartPane.adjustPaneViewport(false, true, true, true)
