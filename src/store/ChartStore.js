@@ -174,19 +174,29 @@ export default class ChartStore {
    */
   addData (data, pos, more) {
     if (isObject(data)) {
+      const dataSize = this._dataList.length
+
       if (isArray(data)) {
         this._timeScaleStore.setLoading(false)
         this._timeScaleStore.setMore(isBoolean(more) ? more : true)
         const isFirstAdd = this._dataList.length === 0
-        this._dataList = data.concat(this._dataList)
+
+        if (pos >= dataSize) {
+          this._dataList = this._dataList.concat(data)
+          if (this._offsetRightBarCount < 0) {
+            this._offsetRightBarCount -= data.length
+          }
+        } else {
+          this._dataList = data.concat(this._dataList)
+        }
+
         if (isFirstAdd) {
           this._timeScaleStore.resetOffsetRightSpace()
         }
         this._timeScaleStore.adjustFromTo()
       } else {
-        const dataSize = this._dataList.length
         if (pos >= dataSize) {
-          this._dataList.push(data)
+          this._dataList = this._dataList.concat(data)
           let offsetRightBarCount = this._timeScaleStore.offsetRightBarCount()
           if (offsetRightBarCount < 0) {
             this._timeScaleStore.setOffsetRightBarCount(--offsetRightBarCount)
