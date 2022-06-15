@@ -95,10 +95,11 @@ Add new data, this method will clear the chart data, no need to call the clearDa
 - `more` tells the chart if there are more historical data, it can be defaulted, the default is true
 
 
-### applyMoreData(dataList, more)
+### applyMoreData(dataList, more, direction)
 Add more historical data.
 - `dataList` is a KLineData array, please refer to the data source for details of KLineData type
 - `more` tells the chart if there is more historical data, it can be the default, the default is true
+- `direction` where to put new data, it can be set to 'before' or 'after', default is 'before'
 
 
 ### updateData(data)

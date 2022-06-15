@@ -46,7 +46,7 @@ export declare interface Chart {
   clearData(): void;
   getDataList(): KLineData[];
   applyNewData(dataList: KLineData[], more?: boolean): void;
-  applyMoreData(dataList: KLineData[], more?: boolean): void;
+  applyMoreData(dataList: KLineData[], more?: boolean, direction?: 'before' | 'after'): void;
   updateData(data: KLineData): void;
   loadMore(cb: (timestamp: number) => void): void;
   addTechnicalIndicatorTemplate(template: TechnicalIndicatorTemplate | TechnicalIndicatorTemplate[]): void;
