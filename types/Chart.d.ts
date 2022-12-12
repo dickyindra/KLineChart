@@ -29,6 +29,7 @@ export declare interface Chart {
   setStyleOptions(options: any): void;
   getStyleOptions(): any;
   setPriceVolumePrecision(pricePrecision: number, volumePrecision: number): void;
+  setMinMove(minMove: number): void;
   setTimezone(timezone: string): void;
   getTimezone(): string;
   setZoomEnabled(enabled: boolean): void;
